@@ -1,5 +1,10 @@
 require 'sinatra'
 require 'mongo'
+require 'amazon/aws'
+require 'amazon/aws/search'
+
+include Amazon::AWS
+include Amazon::AWS::Search
 
 def collection
   unless @db
@@ -15,6 +20,20 @@ get '/' do
   stats ? stats["redirects"].to_s : "0"
 end
 
+get '/submit' do  
+  @images = []
+  if params["keywords"]
+    is = ItemSearch.new('All', { 'Keywords' => params["keywords"]}) 
+    rg = ResponseGroup.new('Images')
+    req = Request.new
+    resp = req.search( is, rg)
+    resp.item_search_response.items[0].item.each do |i|
+      @images << {"url" => i.medium_image.url, "asin" => i.asin}
+    end
+  end
+  haml :submit
+end
+
 get '/:id' do  
   return unless params["id"].length == 10
   stats = collection.find_one
@@ -26,3 +45,6 @@ get '/:id' do
   collection.update({"_id" => stats["_id"]}, stats)
   redirect "http://www.amazon.com/dp/-/#{params["id"]}?tag=beautthing05-20"
 end
+
+
+

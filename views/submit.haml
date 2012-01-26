@@ -1,0 +1,8 @@
+%p
+  %form{:action => "", :method => 'get'}
+    %input{:type => 'text', :name => 'keywords'}
+    %input{:type => 'submit'}
+
+#images
+  - @images.each do |img|
+    %img{:src => img["url"], :data => img["asin"]}
