@@ -28,7 +28,7 @@ get '/submit' do
     req = Request.new
     req.search(is, rg) do |resp|
       resp.item_search_response.items[0].item.each do |i|
-        @images << {"url" => i.medium_image.url, "asin" => i.asin}
+        @images << {"url" => i.medium_image.url, "asin" => i.asin} if i.medium_image
       end
     end
   end
