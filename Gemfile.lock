@@ -10,12 +10,12 @@ GEM
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
-    ruby-aaws (0.7.0)
     sinatra (1.3.2)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
     tilt (1.3.3)
+    treyconnell-ruby-aaws (0.8.1)
 
 PLATFORMS
   ruby
@@ -24,5 +24,5 @@ DEPENDENCIES
   bson_ext
   haml
   mongo
-  ruby-aaws
   sinatra
+  treyconnell-ruby-aaws

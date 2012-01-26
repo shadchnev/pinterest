@@ -25,10 +25,12 @@ get '/submit' do
   if params["keywords"]
     is = ItemSearch.new('All', { 'Keywords' => params["keywords"]}) 
     rg = ResponseGroup.new('Images')
+    is.response_group = rg
     req = Request.new
-    resp = req.search( is, rg)
-    resp.item_search_response.items[0].item.each do |i|
-      @images << {"url" => i.medium_image.url, "asin" => i.asin}
+    req.search(is, rg) do |resp|
+      resp.item_search_response.items[0].item.each do |i|
+        @images << {"url" => i.medium_image.url, "asin" => i.asin}
+      end
     end
   end
   haml :submit

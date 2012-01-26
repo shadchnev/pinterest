@@ -3,4 +3,4 @@ gem "sinatra"
 gem 'mongo'
 gem 'bson_ext'
 gem 'haml'
-gem 'ruby-aaws'
+gem 'treyconnell-ruby-aaws'
