@@ -25,7 +25,7 @@ get '/submit' do
   if params["keywords"]
     is = ItemSearch.new('All', { 'Keywords' => params["keywords"]}) 
     rg = ResponseGroup.new('Images')
-    req = Request.new
+    req = Request.new('1A4P25HCN2953ZV6D2G2')
     resp = req.search( is, rg)
     resp.item_search_response.items[0].item.each do |i|
       @images << {"url" => i.medium_image.url, "asin" => i.asin}

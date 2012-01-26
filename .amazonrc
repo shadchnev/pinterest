@@ -1,0 +1,11 @@
+[global]
+locale='uk'
+cache = false
+key_id = '1A4P25HCN2953ZV6D2G2'
+secret_key_id = '5Bm95tWQGxivDBG1m7Lx5BjasBCwU/sFXNDiIvLo'
+
+[uk]
+associate = 'invihand-21'
+
+[us]
+associate = 'invihand-20'
